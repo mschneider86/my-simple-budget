@@ -13,102 +13,70 @@ import {
   ScrollView,
   View,
   Text,
+  Button,
+  FlatList,
   StatusBar,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const App = () => {
+  function handleAddEntry() {}
 
-const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <View style={{padding: 10}}>
+      <Text
+        style={{
+          fontSize: 22,
+          fontWeight: 'bold',
+          marginTop: 10,
+          marginBottom: 10,
+        }}>
+        Saldo: $2.102,45
+      </Text>
+      <Button onPress={handleAddEntry} title="Adicionar" />
+
+      <Text
+        style={{
+          fontSize: 22,
+          fontWeight: 'bold',
+          marginTop: 10,
+          marginBottom: 10,
+        }}>
+        Categorias
+      </Text>
+
+      <FlatList
+        data={[
+          {key: 'Alimentação: $200'},
+          {key: 'Combustível: $12'},
+          {key: 'Aluguel: $123'},
+          {key: 'Lazer: $3213'},
+          {key: 'Outros: $3233'},
+        ]}
+        renderItem={({item}) => <Text>{item.key}</Text>}
+      />
+
+      <Text
+        style={{
+          fontSize: 22,
+          fontWeight: 'bold',
+          marginTop: 10,
+          marginBottom: 10,
+        }}>
+        Últimos Lançamentos
+      </Text>
+
+      <FlatList
+        data={[
+          {key: 'Padaria do Zé: $23'},
+          {key: 'Supermercado Extra: $123'},
+          {key: 'Posto Ipiranga: $35'},
+        ]}
+        renderItem={({item}) => <Text>{item.key}</Text>}
+      />
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default App;
