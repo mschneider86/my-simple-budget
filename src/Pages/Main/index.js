@@ -6,7 +6,9 @@ import styles from './styles';
 const Main = () => {
   return (
     <View style={styles.container}>
-      <Text>Main</Text>
+      <Text style={styles.label}>Main</Text>
     </View>
   );
 };
+
+export default Main;
