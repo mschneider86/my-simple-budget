@@ -11,7 +11,6 @@ export default function BalancePanel() {
     <View>
       <BalancePanelLabel />
       <BalancePanelChart />
-      <Button title="Adicionar" />
     </View>
   );
 }

@@ -5,7 +5,7 @@ import BalanceLabel from '../../components/BalanceLabel';
 
 import styles from './styles';
 
-export default function NewEntry() {
+export default function NewEntry({ navigation }) {
   return (
     <View style={styles.container}>
       <BalanceLabel />
@@ -19,7 +19,7 @@ export default function NewEntry() {
 
       <View>
         <Button title="Adicionar" />
-        <Button title="Cancelar" />
+        <Button title="Cancelar" onPress={() => navigation.goBack()} />
       </View>
     </View>
   );
