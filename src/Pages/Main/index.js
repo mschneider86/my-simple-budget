@@ -1,12 +1,18 @@
-import React from './node_modules/react';
+import React from 'react';
 
 import { View, Text } from 'react-native';
+import BalancePanel from '../../components/BalancePanel';
+import EntrySummary from '../../components/EntrySummary';
+import EntryList from '../../components/EntryList';
+
 import styles from './styles';
 
 const Main = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Main</Text>
+      <BalancePanel />
+      <EntrySummary />
+      <EntryList />
     </View>
   );
 };
