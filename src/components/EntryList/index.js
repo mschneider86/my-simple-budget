@@ -5,18 +5,18 @@ import EntryListItem from './EntryListItem';
 
 import styles from './styles';
 
-export default function EntryList() {
+export default function EntryList({ entries }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Últimos Lançamentos</Text>
 
       <FlatList
-        data={[
-          { key: 'Padaria do Zé: $23' },
-          { key: 'Supermercado Extra: $123' },
-          { key: 'Posto Ipiranga: $35' },
-        ]}
-        renderItem={({ item }) => <Text>{item.key}</Text>}
+        data={entries}
+        renderItem={({ item }) => (
+          <Text>
+            {item.description} - ${item.amount}
+          </Text>
+        )}
       />
     </View>
   );

@@ -6,10 +6,10 @@ import BalancePanelChart from './BalancePanelChart';
 
 import styles from './styles';
 
-export default function BalancePanel() {
+export default function BalancePanel({ currentBalance }) {
   return (
     <View>
-      <BalancePanelLabel />
+      <BalancePanelLabel currentBalance={currentBalance} />
       <BalancePanelChart />
     </View>
   );

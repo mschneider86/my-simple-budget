@@ -6,11 +6,11 @@ import EntrySummaryList from './EntrySummaryList';
 
 import styles from './styles';
 
-export default function EntrySummary() {
+export default function EntrySummary({ summarizedEntries }) {
   return (
     <View style={styles.container}>
       <EntrySummaryChart />
-      <EntrySummaryList />
+      <EntrySummaryList summarizedEntries={summarizedEntries} />
     </View>
   );
 }
