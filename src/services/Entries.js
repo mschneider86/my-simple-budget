@@ -2,15 +2,17 @@ import { Alert } from 'react-native';
 
 import { getRealm } from './realm';
 
-export const save = async () => {
+export const save = async (value) => {
   const realm = await getRealm();
   let data = {};
+
+  const { amount } = value;
 
   try {
     realm.write(() => {
       data = {
         id: 'ABC',
-        amount: 12.4,
+        amount,
         entryAt: new Date(),
         isInit: false,
       };
