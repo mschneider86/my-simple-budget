@@ -5,10 +5,16 @@ import BalancePanel from '../../components/BalancePanel';
 import EntrySummary from '../../components/EntrySummary';
 import EntryList from '../../components/EntryList';
 
+import { save } from '../../services/Entries';
+
 import styles from './styles';
 
 const Main = ({ navigation }) => {
   const currentBalance = 2064.35;
+
+  const save = () => {
+    save();
+  };
 
   const summarizedEntries = [
     { key: '1', description: 'Alimentação', amount: 200 },
