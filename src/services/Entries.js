@@ -2,6 +2,16 @@ import { Alert } from 'react-native';
 
 import { getRealm } from './realm';
 
+export const getAll = async () => {
+  const realm = await getRealm();
+
+  const entries = realm.objects('Entry');
+
+  console.log('getAll :: entries ', JSON.stringify(entries));
+
+  return entries;
+};
+
 export const save = async (value) => {
   const realm = await getRealm();
   let data = {};
