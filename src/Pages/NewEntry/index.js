@@ -5,7 +5,7 @@ import BalanceLabel from '../../components/BalanceLabel';
 
 import styles from './styles';
 
-import { save } from '../../services/Entries';
+import { save, deleteEntry } from '../../services/Entries';
 
 export default function NewEntry({ navigation }) {
   const currentBalance = 2065.35;
@@ -17,13 +17,23 @@ export default function NewEntry({ navigation }) {
 
   const [amount, setAmount] = useState(`${currentEntry.amount}`);
 
-  const saveEntry = () => {
+  const handleSaveEntry = () => {
     const data = {
       amount: parseFloat(amount),
     };
 
     console.log('NewEntry :: save ', data);
     save(data, currentEntry);
+    handleGoBack();
+  };
+
+  const handleDeleteEntry = () => {
+    deleteEntry(entry);
+    handleGoBack();
+  };
+
+  const handleGoBack = () => {
+    navigation.goBack();
   };
 
   return (
@@ -42,8 +52,9 @@ export default function NewEntry({ navigation }) {
       </View>
 
       <View>
-        <Button title="Adicionar" onPress={saveEntry} />
-        <Button title="Cancelar" onPress={() => navigation.goBack()} />
+        <Button title="Adicionar" onPress={handleSaveEntry} />
+        <Button title="Excluir" onPress={handleDeleteEntry} />
+        <Button title="Cancelar" onPress={handleGoBack} />
       </View>
     </View>
   );
