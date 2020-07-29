@@ -9,15 +9,21 @@ import { save } from '../../services/Entries';
 
 export default function NewEntry({ navigation }) {
   const currentBalance = 2065.35;
-  const [amount, setAmount] = useState('0.00');
+  const currentEntry = navigation.getParam('entry', {
+    id: null,
+    amount: 0.0,
+    entryAt: new Date(),
+  });
 
-  const save = () => {
-    const value = {
+  const [amount, setAmount] = useState(`${currentEntry.amount}`);
+
+  const saveEntry = () => {
+    const data = {
       amount: parseFloat(amount),
     };
 
-    console.log('NewEntry :: save ', value);
-    save(value);
+    console.log('NewEntry :: save ', data);
+    save(data, currentEntry);
   };
 
   return (
@@ -36,7 +42,7 @@ export default function NewEntry({ navigation }) {
       </View>
 
       <View>
-        <Button title="Adicionar" onPress={save} />
+        <Button title="Adicionar" onPress={saveEntry} />
         <Button title="Cancelar" onPress={() => navigation.goBack()} />
       </View>
     </View>
