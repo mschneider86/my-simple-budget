@@ -6,8 +6,6 @@ import styles from './styles';
 export default function EntrySummaryList({ summarizedEntries }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Categorias</Text>
-
       <FlatList
         data={summarizedEntries}
         renderItem={({ item }) => (

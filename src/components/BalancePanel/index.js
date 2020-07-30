@@ -8,6 +8,7 @@ import BalancePanelChart from './BalancePanelChart';
 
 import styles from './styles';
 import Colors from '../../styles/Colors';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function BalancePanel({ onNewEntryPress }) {
