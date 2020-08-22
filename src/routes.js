@@ -1,4 +1,4 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 
 import Main from './pages/Main';
 import NewEntry from './pages/NewEntry';
@@ -13,7 +13,7 @@ const Routes = createAppContainer(
     },
     {
       initialRouteName: 'Main',
-      backBehavior: 'order',
+      backBehavior: 'history',
     },
   ),
 );

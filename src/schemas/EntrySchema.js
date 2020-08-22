@@ -4,14 +4,14 @@ const EntrySchema = {
   properties: {
     id: 'string',
     amount: 'double',
-    description: 'string',
+    description: 'string?',
     entryAt: 'date',
     latitude: 'float?',
     longitude: 'float?',
     address: 'string?',
     photo: 'string?',
     isInit: 'bool',
-    category: 'Category',
+    category: 'Category?',
   },
 };
 

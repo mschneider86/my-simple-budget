@@ -1,22 +1,20 @@
-import { Alert } from 'react-native';
-import { getUUID } from '../services/UUID';
-import { getRealm } from './realm';
+import {Alert} from 'react-native';
 
-export const getAll = async () => {
+import {getRealm} from './Realm';
+import {getUUID} from '../services/UUID';
+
+export const getEntries = async () => {
   const realm = await getRealm();
-
   const entries = realm.objects('Entry');
 
-  console.log('getAll :: entries ', JSON.stringify(entries));
+  console.log('getEntries :: entries ', JSON.stringify(entries));
 
   return entries;
 };
 
-export const save = async (value, entry = {}) => {
+export const saveEntry = async (value, entry = {}) => {
   const realm = await getRealm();
   let data = {};
-
-  const { amount } = value;
 
   try {
     realm.write(() => {
@@ -32,14 +30,14 @@ export const save = async (value, entry = {}) => {
 
     console.log('saveEntry :: data: ', JSON.stringify(data));
   } catch (error) {
-    console.error('saveEntry :: error saving object: ', JSON.stringify(data));
-    Alert.alert('Erro ao salvar os dados');
+    console.error('saveEntry :: error on save object: ', JSON.stringify(data));
+    Alert.alert('Erro ao salvar os dados de lançamento.');
   }
 
   return data;
 };
 
-export const deleteEntry = async (entry) => {
+export const deleteEntry = async entry => {
   const realm = await getRealm();
 
   try {
@@ -48,9 +46,9 @@ export const deleteEntry = async (entry) => {
     });
   } catch (error) {
     console.error(
-      'deleteEntry :: error deleting object: ',
+      'deleteEntry :: error on delete object: ',
       JSON.stringify(entry),
     );
-    Alert.alert('Erro ao excluir o registro');
+    Alert.alert('Erro ao excluir este lançamento.');
   }
 };

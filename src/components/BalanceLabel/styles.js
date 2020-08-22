@@ -1,15 +1,25 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+
+import Colors from '../../styles/Colors';
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     alignItems: 'center',
   },
   label: {
     fontSize: 12,
+    colors: Colors.white,
   },
   value: {
-    fontSize: 18,
+    fontSize: 28,
+    color: Colors.white,
+  },
+  panel: {
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    marginVertical: 10,
   },
 });
 

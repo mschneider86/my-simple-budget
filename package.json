@@ -1,36 +1,37 @@
 {
-  "name": "my-simple-budget",
+  "name": "smartMoney",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "start": "react-native start",
+    "android": "react-native run-android",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.11.0",
-    "react-devtools": "^4.7.0",
-    "react-native": "0.62.2",
-    "react-native-gesture-handler": "^1.6.1",
+    "core-js": "^3.6.5",
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-native-gesture-handler": "^1.4.1",
     "react-native-linear-gradient": "^2.5.6",
-    "react-native-reanimated": "^1.9.0",
-    "react-native-vector-icons": "^7.0.0",
-    "react-navigation": "^4.4.0",
-    "realm": "^6.0.3",
-    "uuid": "^8.3.0"
+    "react-native-masked-text": "^1.13.0",
+    "react-native-reanimated": "^1.2.0",
+    "react-native-svg": "^9.13.3",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.3",
+    "realm": "^6.0.4",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/runtime": "^7.10.4",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "babel-jest": "^26.1.0",
-    "eslint": "^7.4.0",
-    "jest": "^26.1.0",
-    "metro-react-native-babel-preset": "^0.60.0",
-    "react-test-renderer": "16.11.0",
-    "reactotron-react-native": "^5.0.0"
+    "@babel/core": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.2.2",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.8.6",
+    "reactotron-react-native": "^3.6.5"
   },
   "jest": {
     "preset": "react-native"
