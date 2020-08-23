@@ -4,7 +4,7 @@ import Colors from '../../styles/Colors';
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.asphalt,
+    backgroundColor: Colors.red,
     width: 59,
     height: 59,
     borderRadius: 150,

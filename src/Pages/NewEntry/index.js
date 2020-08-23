@@ -8,6 +8,7 @@ import {deleteEntry} from '../../services/Entries';
 import NewEntryInput from '../../components/NewEntryInput';
 import NewEntryCategoryPicker from '../../components/NewEntryCategoryPicker';
 import NewEntryDatePicker from '../../components/NewEntryDatePicker';
+import NewEntryDeleteAction from '../../components/NewEntryDeleteAction';
 
 import Colors from '../../styles/Colors';
 
@@ -74,6 +75,7 @@ const NewEntry = ({navigation}) => {
 
         <View style={styles.formActionContainer}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+          <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
         </View>
       </View>
 
@@ -84,7 +86,7 @@ const NewEntry = ({navigation}) => {
             isValid() && onSave();
           }}
         />
-        <Button title="Excluir" onPress={onDelete} />
+
         <Button title="Cancelar" onPress={onClose} />
       </View>
     </View>
