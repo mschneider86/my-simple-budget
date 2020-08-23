@@ -17,9 +17,12 @@ const NewEntry = ({navigation}) => {
     id: null,
     amount: '0.00',
     entryAt: new Date(),
+    category: {id: null, name: 'Selecione'},
   });
 
+  const [debit, setDebit] = useState(entry.amount <= 0);
   const [amount, setAmount] = useState(entry.amount);
+  const [category, setCategory] = useState(entry.category);
 
   const isValid = () => {
     if (parseFloat(amount) !== 0) {
@@ -32,6 +35,7 @@ const NewEntry = ({navigation}) => {
   const onSave = () => {
     const data = {
       amount: parseFloat(amount),
+      category: category,
     };
 
     console.log('NewEntry :: save ', data);
@@ -53,9 +57,17 @@ const NewEntry = ({navigation}) => {
       <BalanceLabel />
 
       <View>
-        <NewEntryInput value={amount} onChangeValue={setAmount} />
+        <NewEntryInput
+          value={amount}
+          onChangeDebit={setDebit}
+          onChangeValue={setAmount}
+        />
 
-        <NewEntryCategoryPicker style={styles.input} />
+        <NewEntryCategoryPicker
+          debit={debit}
+          category={category}
+          onChangeCategory={setCategory}
+        />
         <Button title="GPS" />
         <Button title="Camera" />
       </View>

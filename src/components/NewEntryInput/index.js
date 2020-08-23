@@ -5,17 +5,19 @@ import {TextInputMask} from 'react-native-masked-text';
 import styles from './styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-export default function NewEntryInput({value, onChangeValue}) {
-  const [debit, setDebit] = useState(value < 0 ? -1 : 1);
-  const [debitPrefix, setDebitPrefix] = useState(value < 0 ? '-' : '');
+export default function NewEntryInput({value, onChangeDebit, onChangeValue}) {
+  const [debit, setDebit] = useState(value <= 0 ? -1 : 1);
+  const [debitPrefix, setDebitPrefix] = useState(value <= 0 ? '-' : '');
 
   const onChangeOperationType = () => {
     if (debit < 0) {
       setDebit(1);
       setDebitPrefix('');
+      onChangeDebit(false);
     } else {
       setDebit(-1);
       setDebitPrefix('-');
+      onChangeDebit(true);
     }
 
     onChangeValue(value * -1);
