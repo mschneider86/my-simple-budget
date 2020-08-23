@@ -7,6 +7,7 @@ import {saveEntry} from '../../services/Entries';
 import {deleteEntry} from '../../services/Entries';
 import NewEntryInput from '../../components/NewEntryInput';
 import NewEntryCategoryPicker from '../../components/NewEntryCategoryPicker';
+import NewEntryDatePicker from '../../components/NewEntryDatePicker';
 
 import Colors from '../../styles/Colors';
 
@@ -23,6 +24,7 @@ const NewEntry = ({navigation}) => {
   const [debit, setDebit] = useState(entry.amount <= 0);
   const [amount, setAmount] = useState(entry.amount);
   const [category, setCategory] = useState(entry.category);
+  const [entryAt, setEntryAt] = useState(entry.entryAt);
 
   const isValid = () => {
     if (parseFloat(amount) !== 0) {
@@ -36,6 +38,7 @@ const NewEntry = ({navigation}) => {
     const data = {
       amount: parseFloat(amount),
       category: category,
+      entryAt: entryAt,
     };
 
     console.log('NewEntry :: save ', data);
@@ -56,7 +59,7 @@ const NewEntry = ({navigation}) => {
     <View style={styles.container}>
       <BalanceLabel />
 
-      <View>
+      <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
           onChangeDebit={setDebit}
@@ -68,8 +71,10 @@ const NewEntry = ({navigation}) => {
           category={category}
           onChangeCategory={setCategory}
         />
-        <Button title="GPS" />
-        <Button title="Camera" />
+
+        <View style={styles.formActionContainer}>
+          <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+        </View>
       </View>
 
       <View>
