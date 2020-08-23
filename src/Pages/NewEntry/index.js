@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TextInput, Button, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
 import BalanceLabel from '../../components/BalanceLabel';
 
@@ -15,7 +15,7 @@ import NewEntryCategoryPicker from '../../components/NewEntryCategoryPicker';
 import NewEntryDatePicker from '../../components/NewEntryDatePicker';
 import NewEntryDeleteAction from '../../components/NewEntryDeleteAction';
 
-import Colors from '../../styles/Colors';
+import styles from './styles';
 
 const NewEntry = ({navigation}) => {
   const currentBalance = 2065.35;
@@ -96,17 +96,5 @@ const NewEntry = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-    padding: 10,
-  },
-  input: {
-    borderColor: '#000',
-    borderWidth: 1,
-  },
-});
 
 export default NewEntry;

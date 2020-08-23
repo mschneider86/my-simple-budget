@@ -1,11 +1,13 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
 import BalancePanel from '../../components/BalancePanel';
 import EntrySummary from '../../components/EntrySummary';
 import EntryList from '../../components/EntryList';
 
 import Colors from '../../styles/Colors';
+
+import styles from './styles';
 
 const Main = ({navigation}) => {
   return (
@@ -23,12 +25,5 @@ const Main = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-  },
-});
 
 export default Main;

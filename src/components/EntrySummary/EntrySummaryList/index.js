@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text, FlatList, StyleSheet} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
+
+import styles from './styles';
 
 const EntrySummaryList = ({entriesGrouped}) => {
   return (
@@ -15,11 +17,5 @@ const EntrySummaryList = ({entriesGrouped}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
-});
 
 export default EntrySummaryList;

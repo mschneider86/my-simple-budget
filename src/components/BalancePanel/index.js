@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -8,6 +8,8 @@ import BalancePanelLabel from './BalancePanelLabel';
 import BalancePanelChart from './BalancePanelChart';
 
 import Colors from '../../styles/Colors';
+
+import styles from './styles';
 
 const BalancePanel = ({onNewEntryPress}) => {
   const currentBalance = 2064.35;
@@ -26,25 +28,5 @@ const BalancePanel = ({onNewEntryPress}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-  panel: {
-    paddingVertical: 10,
-  },
-  button: {
-    backgroundColor: Colors.green,
-    borderRadius: 150,
-    alignSelf: 'flex-end',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 50,
-    height: 50,
-    shadowColor: Colors.black,
-    elevation: 5,
-    marginTop: -25,
-    marginRight: 10,
-  },
-});
 
 export default BalancePanel;
