@@ -6,6 +6,7 @@ import Colors from '../../styles/Colors';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    padding: 20,
   },
   label: {
     fontSize: 12,

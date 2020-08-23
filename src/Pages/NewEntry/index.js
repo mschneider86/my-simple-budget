@@ -3,6 +3,11 @@ import {View, TextInput, Button, StyleSheet} from 'react-native';
 
 import BalanceLabel from '../../components/BalanceLabel';
 
+import ActionFooter, {
+  ActionPrimaryButton,
+  ActionSecondaryButton,
+} from '../../components/Core/ActionFooter';
+
 import {saveEntry} from '../../services/Entries';
 import {deleteEntry} from '../../services/Entries';
 import NewEntryInput from '../../components/NewEntryInput';
@@ -79,16 +84,15 @@ const NewEntry = ({navigation}) => {
         </View>
       </View>
 
-      <View>
-        <Button
-          title="Adicionar"
+      <ActionFooter>
+        <ActionPrimaryButton
+          title={entry.id ? 'Salvar' : 'Adicionar'}
           onPress={() => {
             isValid() && onSave();
           }}
         />
-
-        <Button title="Cancelar" onPress={onClose} />
-      </View>
+        <ActionSecondaryButton title="Cancelar" onPress={onClose} />
+      </ActionFooter>
     </View>
   );
 };

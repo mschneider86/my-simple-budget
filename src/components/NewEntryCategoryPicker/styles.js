@@ -31,21 +31,4 @@ const styles = StyleSheet.create({
     color: Colors.white,
     textAlign: 'center',
   },
-  closeButton: {
-    borderColor: Colors.green,
-    backgroundColor: Colors.background,
-    borderWidth: 1,
-    borderRadius: 15,
-    textAlign: 'center',
-    alignSelf: 'center',
-    marginHorizontal: 20,
-    marginVertical: 10,
-    paddingVertical: 3,
-    paddingHorizontal: 5,
-  },
-  closeButtonText: {
-    fontSize: 14,
-    color: Colors.green,
-    textAlign: 'center',
-  },
 });

@@ -5,6 +5,11 @@ import {
   getCreditCategories,
 } from '../../services/Categories';
 
+import ActionFooter, {
+  ActionPrimaryButton,
+  ActionSecondaryButton,
+} from '../Core/ActionFooter';
+
 import styles from './styles';
 
 export default function NewEntrycategoryPicker({
@@ -65,6 +70,9 @@ export default function NewEntrycategoryPicker({
             <Text style={styles.closeButtonText}>Fechar</Text>
           </TouchableOpacity>
         </View>
+        <ActionFooter>
+          <ActionPrimaryButton title="Fechar" onPress={onClosePress} />
+        </ActionFooter>
       </Modal>
     </View>
   );
