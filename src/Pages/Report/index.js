@@ -1,31 +1,60 @@
-import React from 'react';
-import {View, Picker, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, Text, ScrollView} from 'react-native';
 import ActionFooter, {
   ActionPrimaryButton,
 } from '../../components/Core/ActionFooter';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Colors from '../../styles/Colors';
+
 import BalanceLabel from '../../components/BalanceLabel';
 import EntrySummary from '../../components/EntrySummary';
 import EntryList from '../../components/EntryList';
-
+import RelativeDaysModal from '../../components/RelativeDaysModal';
 import styles from './styles';
 
 const Report = ({navigation}) => {
+  const [relativeDaysModalVisible, setRelativeDaysModalVisible] = useState(
+    false,
+  );
+
+  const [relativeDays, setRelativeDays] = useState(7);
+
+  const onRelativeDaysPress = item => {
+    setRelativeDays(item);
+    onRelativeDaysClosePress;
+  };
+
+  const onRelativeDaysClosePress = () => {
+    setRelativeDaysModalVisible(false);
+  };
+
   return (
     <View style={styles.container}>
       <BalanceLabel />
       <View>
-        <Picker>
-          <Picker.Item label="Todas Categorias" />
-        </Picker>
-        <Picker>
-          <Picker.Item label="Últimos 7 dias" />
-        </Picker>
+        <TouchableOpacity
+          style={styles.filterButton}
+          onPress={() => {
+            setRelativeDaysModalVisible(true);
+          }}>
+          <Text style={styles.filterButtonText}>Últimos 7 dias</Text>
+          <Icon
+            name="keyboard-arrow-down"
+            size={20}
+            color={Colors.champagneDark}
+          />
+        </TouchableOpacity>
+        <RelativeDaysModal
+          isVisible={relativeDaysModalVisible}
+          onConfirm={onRelativeDaysPress}
+          onCancel={onRelativeDaysClosePress}
+        />
       </View>
 
       <ScrollView>
         <EntrySummary />
-        <EntryList />
+        <EntryList days={relativeDays} />
       </ScrollView>
 
       <ActionFooter>

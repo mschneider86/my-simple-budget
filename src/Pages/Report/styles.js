@@ -7,6 +7,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.asphalt,
   },
+  filterButton: {
+    flexDirection: 'row',
+    borderColor: Colors.champagneDark,
+    borderWidth: 1,
+    borderRadius: 150,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginHorizontal: 5,
+  },
+  filterButtonText: {
+    color: Colors.champagneDark,
+  },
 });
 
 export default styles;
