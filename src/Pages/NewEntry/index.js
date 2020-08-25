@@ -8,24 +8,24 @@ import ActionFooter, {
   ActionSecondaryButton,
 } from '../../components/Core/ActionFooter';
 
-import {saveEntry} from '../../services/Entries';
-import {deleteEntry} from '../../services/Entries';
 import NewEntryInput from '../../components/NewEntryInput';
 import NewEntryCategoryPicker from '../../components/NewEntryCategoryPicker';
 import NewEntryDatePicker from '../../components/NewEntryDatePicker';
 import NewEntryDeleteAction from '../../components/NewEntryDeleteAction';
 
+import useEntries from '../../hooks/useEntries';
+
 import styles from './styles';
 
 const NewEntry = ({navigation}) => {
-  const currentBalance = 2065.35;
-
   const entry = navigation.getParam('entry', {
     id: null,
     amount: '0.00',
     entryAt: new Date(),
     category: {id: null, name: 'Selecione'},
   });
+
+  const [, saveEntry, deleteEntry] = useEntries();
 
   const [debit, setDebit] = useState(entry.amount <= 0);
   const [amount, setAmount] = useState(entry.amount);
