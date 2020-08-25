@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
   },
   value: {
     fontSize: 28,
+    textAlign: 'center',
     color: Colors.white,
   },
   panel: {
     borderRadius: 10,
+    minWidth: 200,
     paddingVertical: 10,
     paddingHorizontal: 30,
     marginVertical: 10,
