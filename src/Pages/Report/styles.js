@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.asphalt,
   },
+  filtersContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 5,
+  },
   filterButton: {
     flexDirection: 'row',
     borderColor: Colors.champagneDark,

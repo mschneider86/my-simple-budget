@@ -1,14 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {View, TouchableOpacity, Text, Modal, FlatList} from 'react-native';
-import {
-  getDebitCategories,
-  getCreditCategories,
-} from '../../services/Categories';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
 
-import ActionFooter, {
-  ActionPrimaryButton,
-  ActionSecondaryButton,
-} from '../Core/ActionFooter';
+import CategoryModal from '../../components/CategoryModal';
 
 import styles from './styles';
 
@@ -18,19 +11,6 @@ export default function NewEntrycategoryPicker({
   onChangeCategory,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [debitCategories, setDebitCategories] = useState([]);
-  const [creditCategories, setCreditCategories] = useState([]);
-
-  useEffect(() => {
-    async function loadCategories() {
-      setDebitCategories(await getDebitCategories());
-      setCreditCategories(await getCreditCategories());
-    }
-
-    loadCategories();
-
-    console.log('NewEntryCategoryPicker :: useEffect');
-  }, [debit]);
 
   const onCategoryPress = item => {
     onChangeCategory(item);
@@ -50,30 +30,12 @@ export default function NewEntrycategoryPicker({
         }}>
         <Text style={styles.pickerButtonText}>{category.name}</Text>
       </TouchableOpacity>
-      <Modal animationType="slide" transparent={false} visible={modalVisible}>
-        <View style={styles.modal}>
-          <FlatList
-            data={debit ? debitCategories : creditCategories}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => {
-              <TouchableOpacity
-                style={styles.modalItem}
-                onPress={() => onCategoryPress(item)}>
-                <Text style={[styles.modalItemText, {color: item.color}]}>
-                  {item.name}
-                </Text>
-              </TouchableOpacity>;
-            }}
-          />
-
-          <TouchableOpacity style={styles.closeButton} onPress={onClosePress}>
-            <Text style={styles.closeButtonText}>Fechar</Text>
-          </TouchableOpacity>
-        </View>
-        <ActionFooter>
-          <ActionPrimaryButton title="Fechar" onPress={onClosePress} />
-        </ActionFooter>
-      </Modal>
+      <CategoryModal
+        categoryType={debit ? 'debit' : 'credit'}
+        isVisible={modalVisible}
+        onConfirm={onCategoryPress}
+        onCancel={onClosePress}
+      />
     </View>
   );
 }
