@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from '../../../styles/Colors';
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     alignItems: 'center',
+    zIndex: 1,
   },
   label: {
     fontSize: 14,

@@ -3,9 +3,7 @@ import Colors from '../../styles/Colors';
 
 const styles = StyleSheet.create({
   container: {},
-  panel: {
-    paddingVertical: 10,
-  },
+  panel: {},
   button: {
     backgroundColor: Colors.green,
     borderRadius: 150,
