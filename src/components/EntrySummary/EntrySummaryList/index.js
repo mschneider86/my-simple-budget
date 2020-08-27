@@ -3,18 +3,16 @@ import {View, Text, FlatList} from 'react-native';
 
 import styles from './styles';
 
+import EntrySummaryListItem from './EntrySummaryListItem';
+
 const EntrySummaryList = ({data}) => {
   return (
-    <View>
-      <FlatList
-        data={data}
-        renderItem={({item}) => (
-          <Text style={styles.entry}>
-            - {item.description} - ${item.amount}
-          </Text>
-        )}
-      />
-    </View>
+    <FlatList
+      style={styles.container}
+      data={data}
+      keyExtractor={item => item.category.id}
+      renderItem={({item}) => <EntrySummaryListItem entry={item} />}
+    />
   );
 };
 
