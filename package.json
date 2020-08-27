@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^2.0.2",
     "core-js": "^3.6.5",
     "loadash": "^1.0.0",
     "moment": "^2.27.0",

@@ -16,6 +16,7 @@ import NewEntryDeleteAction from '../../components/NewEntryDeleteAction';
 import useEntries from '../../hooks/useEntries';
 
 import styles from './styles';
+import NewEntryAddressPicker from './NewEntryAddressPicker';
 
 const NewEntry = ({navigation}) => {
   const entry = navigation.getParam('entry', {
@@ -80,6 +81,7 @@ const NewEntry = ({navigation}) => {
 
         <View style={styles.formActionContainer}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+          <NewEntryAddressPicker />
           <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
         </View>
       </View>
