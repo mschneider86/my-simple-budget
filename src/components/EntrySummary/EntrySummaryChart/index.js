@@ -1,14 +1,28 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
-const EntrySummaryChart = () => {
-  return <View style={styles.container} />;
-};
+import {PieChart} from 'react-native-svg-charts';
 
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
-});
+import styles from './styles';
+
+const EntrySummaryChart = ({data}) => {
+  const chartData = data.map(({category, amount}) => ({
+    key: category.id,
+    value: amount,
+    svg: {
+      fill: category.color,
+    },
+    arc: {
+      outerRadius: '100%',
+      innerRadius: '80%',
+    },
+  }));
+
+  return (
+    <View style={styles.container}>
+      <PieChart style={styles.chart} />
+    </View>
+  );
+};
 
 export default EntrySummaryChart;

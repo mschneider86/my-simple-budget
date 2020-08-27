@@ -3,11 +3,11 @@ import {View, Text, FlatList} from 'react-native';
 
 import styles from './styles';
 
-const EntrySummaryList = ({entriesGrouped}) => {
+const EntrySummaryList = ({data}) => {
   return (
     <View>
       <FlatList
-        data={entriesGrouped}
+        data={data}
         renderItem={({item}) => (
           <Text style={styles.entry}>
             - {item.description} - ${item.amount}
