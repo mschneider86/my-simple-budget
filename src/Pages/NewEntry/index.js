@@ -23,6 +23,9 @@ const NewEntry = ({navigation}) => {
     id: null,
     amount: '0.00',
     entryAt: new Date(),
+    address: null,
+    latitude: null,
+    longitude: null,
     category: {id: null, name: 'Selecione'},
   });
 
@@ -32,6 +35,9 @@ const NewEntry = ({navigation}) => {
   const [amount, setAmount] = useState(entry.amount);
   const [category, setCategory] = useState(entry.category);
   const [entryAt, setEntryAt] = useState(entry.entryAt);
+  const [address, setAddress] = useState(entry.address);
+  const [latitude, setLatitude] = useState(entry.latitude);
+  const [longitude, setLongitude] = useState(entry.longitude);
 
   const isValid = () => {
     if (parseFloat(amount) !== 0) {
@@ -44,6 +50,9 @@ const NewEntry = ({navigation}) => {
   const onSave = () => {
     const data = {
       amount: parseFloat(amount),
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
       category: category,
       entryAt: entryAt,
     };
@@ -81,7 +90,14 @@ const NewEntry = ({navigation}) => {
 
         <View style={styles.formActionContainer}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
-          <NewEntryAddressPicker />
+          <NewEntryAddressPicker
+            address={address}
+            onChange={({latitude, longitude, address}) => {
+              setLatitude(latitude);
+              setLongitude(longitude);
+              setAddress(address);
+            }}
+          />
           <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
         </View>
       </View>

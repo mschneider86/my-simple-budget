@@ -8,13 +8,31 @@ import Colors from '../../../styles/Colors';
 
 import styles from './styles';
 
-export default function NewEntryAddressPicker() {
+export default function NewEntryAddressPicker({address, onChange}) {
   const getLocation = (latitude, longitude) => {
     Geocoder.init('INSERT_GOOGLE_API_HERE');
 
     Geocoder.from({latitude, longitude})
       .then(json => {
         const formattedAddress = json.results[0].formattedAddress;
+
+        Alert.alert('Localização', formattedAddress, [
+          {
+            text: 'Cancelar',
+            onPress: () => {},
+            style: 'cancel',
+          },
+          {
+            text: 'Confirmar',
+            onPress: () => {
+              onChange({
+                latitude: latitude,
+                longitude: longitude,
+                address: formattedAddress,
+              });
+            },
+          },
+        ]);
       })
       .catch(error => {
         console.error(
@@ -47,11 +65,29 @@ export default function NewEntryAddressPicker() {
   };
 
   const onButtonPress = () => {
-    getPosition();
+    if (address) {
+      Alert.alert('Localização', address, [
+        {
+          text: 'Apagar',
+          onPress: () => {
+            onChange({latitude: null, longitude: null, address: ''});
+          },
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => console.log('OK Pressed'),
+        },
+      ]);
+    } else {
+      getPosition();
+    }
   };
   return (
     <View>
-      <TouchableOpacity style={styles.button} onPress={onButtonPress}>
+      <TouchableOpacity
+        style={[styles.button, address ? styles.buttonActivated : '']}
+        onPress={onButtonPress}>
         <Icon name="person-pin" size={30} color={Colors.white} />
       </TouchableOpacity>
     </View>

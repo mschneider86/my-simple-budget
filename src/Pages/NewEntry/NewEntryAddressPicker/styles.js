@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 3,
   },
+  buttonActivated: {
+    backgroundColor: Colors.blue,
+  },
 });
 
 export default styles;
