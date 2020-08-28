@@ -15,21 +15,6 @@ const styles = StyleSheet.create({
   buttonActivated: {
     backgroundColor: Colors.blue,
   },
-  camera: {
-    flex: 1,
-  },
-  buttonTakePicture: {
-    flex: 0,
-    alignSelf: 'center',
-    position: 'absolute',
-    bottom: 20,
-  },
-  buttonDeletePicture: {
-    flex: 0,
-    position: 'absolute',
-    top: 20,
-    bottom: 20,
-  },
 });
 
 export default styles;

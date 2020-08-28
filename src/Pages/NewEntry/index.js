@@ -24,6 +24,7 @@ const NewEntry = ({navigation}) => {
     id: null,
     amount: '0.00',
     entryAt: new Date(),
+    photo: null,
     address: null,
     latitude: null,
     longitude: null,
@@ -36,6 +37,7 @@ const NewEntry = ({navigation}) => {
   const [amount, setAmount] = useState(entry.amount);
   const [category, setCategory] = useState(entry.category);
   const [entryAt, setEntryAt] = useState(entry.entryAt);
+  const [photo, setPhoto] = useState(entry.photo);
   const [address, setAddress] = useState(entry.address);
   const [latitude, setLatitude] = useState(entry.latitude);
   const [longitude, setLongitude] = useState(entry.longitude);
@@ -49,9 +51,11 @@ const NewEntry = ({navigation}) => {
   };
 
   const onSave = () => {
+    //TODO test remove properties name
     const data = {
       amount: parseFloat(amount),
       address: address,
+      photo: photo,
       latitude: latitude,
       longitude: longitude,
       category: category,
@@ -91,7 +95,7 @@ const NewEntry = ({navigation}) => {
 
         <View style={styles.formActionContainer}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
-          <NewEntryCameraPicker />
+          <NewEntryCameraPicker photo={photo} onChangePhoto={setPhoto} />
           <NewEntryAddressPicker
             address={address}
             onChange={({latitude, longitude, address}) => {
