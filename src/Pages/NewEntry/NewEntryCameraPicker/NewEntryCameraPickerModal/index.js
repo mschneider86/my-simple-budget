@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import {Alert, View, Text, Modal} from 'react-native';
+import {Alert, View, ImageBackground, Modal} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {Icon} from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../../../../styles/Colors';
 
 import styles from './styles';
-import NewEntryCameraPicker from '..';
 
 const NewEntryCameraPickerModal = ({
   photo,
@@ -38,34 +37,55 @@ const NewEntryCameraPickerModal = ({
   return (
     <View>
       <Modal animationType="slide" transparent={false} visible={isVisible}>
-        <RNCamera
-          style={styles.camera}
-          ref={ref => setCamera(ref)}
-          type={RNCamera.Constants.Type.back}
-          autoFocus={RNCamera.Constants.AutoFocus.on}
-          flashMode={RNCamera.Constants.FlashMode.auto}
-          androidCameraPermissionOptions={{
-            title: 'Permissão para usar a câmera',
-            message: 'Precisamos da sua permissão para usar a câmera.',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancelar',
-          }}
-          captureAudio={false}>
-          <Icon
-            name="photo-camera"
-            size={40}
-            color={Colors.white}
-            onPress={onTakePicture}
-            style={styles.buttonTakePicture}
-          />
-          <Icon
-            name="close"
-            size={50}
-            color={Colors.white}
-            onPress={onDeletePicture}
-            style={styles.buttonDeletePicture}
-          />
-        </RNCamera>
+        {photo ? (
+          <ImageBackground style={styles.imagePreview} source={{uri: photo}}>
+            <View style={styles.pictureButtonActions}>
+              <Icon
+                name="delete"
+                size={50}
+                color={Colors.white}
+                onPress={onDeletePicture}
+                style={styles.buttonClose}
+              />
+              <Icon
+                name="check"
+                size={50}
+                color={Colors.white}
+                onPress={onClose}
+                style={styles.buttonCheck}
+              />
+            </View>
+          </ImageBackground>
+        ) : (
+          <RNCamera
+            style={styles.camera}
+            ref={ref => setCamera(ref)}
+            type={RNCamera.Constants.Type.back}
+            autoFocus={RNCamera.Constants.AutoFocus.on}
+            flashMode={RNCamera.Constants.FlashMode.auto}
+            androidCameraPermissionOptions={{
+              title: 'Permissão para usar a câmera',
+              message: 'Precisamos da sua permissão para usar a câmera.',
+              buttonPositive: 'Ok',
+              buttonNegative: 'Cancelar',
+            }}
+            captureAudio={false}>
+            <Icon
+              name="photo-camera"
+              size={40}
+              color={Colors.white}
+              onPress={onTakePicture}
+              style={styles.buttonTakePicture}
+            />
+            <Icon
+              name="close"
+              size={50}
+              color={Colors.white}
+              onPress={onDeletePicture}
+              style={styles.buttonDeletePicture}
+            />
+          </RNCamera>
+        )}
       </Modal>
     </View>
   );

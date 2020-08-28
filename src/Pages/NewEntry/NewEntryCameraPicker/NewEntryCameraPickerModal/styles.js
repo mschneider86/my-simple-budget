@@ -18,6 +18,24 @@ const styles = StyleSheet.create({
     top: 20,
     bottom: 20,
   },
+  imagePreview: {
+    width: '100%',
+    height: '100%',
+  },
+  pictureButtonActions: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    position: 'absolute',
+    bottom: 16,
+  },
+  buttonClose: {
+    marginLeft: 16,
+  },
+  buttonCheck: {
+    marginRight: 16,
+  },
 });
 
 export default styles;
