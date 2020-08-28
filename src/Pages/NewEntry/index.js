@@ -17,6 +17,7 @@ import useEntries from '../../hooks/useEntries';
 
 import styles from './styles';
 import NewEntryAddressPicker from './NewEntryAddressPicker';
+import NewEntryCameraPicker from './NewEntryCameraPicker';
 
 const NewEntry = ({navigation}) => {
   const entry = navigation.getParam('entry', {
@@ -90,6 +91,7 @@ const NewEntry = ({navigation}) => {
 
         <View style={styles.formActionContainer}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+          <NewEntryCameraPicker />
           <NewEntryAddressPicker
             address={address}
             onChange={({latitude, longitude, address}) => {
@@ -98,6 +100,7 @@ const NewEntry = ({navigation}) => {
               setAddress(address);
             }}
           />
+
           <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
         </View>
       </View>

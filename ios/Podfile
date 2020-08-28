@@ -29,6 +29,8 @@ target 'smartMoney' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
   target 'smartMoneyTests' do
     inherit! :search_paths
     # Pods for testing
