@@ -31,7 +31,7 @@ const useCategories = () => {
 
     const loadInitCategories = async () => {
       const data = await getInitCategories();
-      setInitCategories(data);
+      setInitCategories(data['0']);
     };
 
     loadDebitCategories();

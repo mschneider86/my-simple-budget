@@ -159,5 +159,5 @@ export const getInitCategories = async () => {
   return realm
     .objects('Category')
     .filtered('isInit = true')
-    .sorted('order');
+    .sorted('order')['0'];
 };
