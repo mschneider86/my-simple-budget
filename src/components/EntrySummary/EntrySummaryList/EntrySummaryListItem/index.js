@@ -4,6 +4,7 @@ import {View, Text} from 'react-native';
 import styles from './styles';
 import Svg, {Circle} from 'react-native-svg';
 import Colors from '../../../../styles/Colors';
+import Currency from '../../../Core/Currency';
 
 export default function EntrySummaryListItem({entry}) {
   const bulletColor = entry.category.color || Colors.white;
@@ -21,7 +22,9 @@ export default function EntrySummaryListItem({entry}) {
         />
       </Svg>
       <Text style={styles.name}>{entry.category.name}</Text>
-      <Text style={styles.value}>{entry.amount}</Text>
+      <Text style={styles.value}>
+        <Currency value={entry.amount} />
+      </Text>
     </View>
   );
 }
