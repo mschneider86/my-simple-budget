@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, ScrollView} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
 import ActionFooter, {
   ActionPrimaryButton,
 } from '../../components/Core/ActionFooter';
@@ -46,6 +52,7 @@ const Report = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
       <BalanceLabel />
       <View style={styles.filtersContainer}>
         <TouchableOpacity

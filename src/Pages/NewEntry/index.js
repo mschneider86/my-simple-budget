@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, StatusBar} from 'react-native';
 
 import BalanceLabel from '../../components/BalanceLabel';
 
@@ -18,6 +18,7 @@ import useEntries from '../../hooks/useEntries';
 import styles from './styles';
 import NewEntryAddressPicker from './NewEntryAddressPicker';
 import NewEntryCameraPicker from './NewEntryCameraPicker';
+import Colors from '../../styles/Colors';
 
 const NewEntry = ({navigation}) => {
   const entry = navigation.getParam('entry', {
@@ -78,6 +79,7 @@ const NewEntry = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
       <BalanceLabel />
 
       <View style={styles.formContainer}>
