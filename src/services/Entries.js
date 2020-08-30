@@ -33,23 +33,25 @@ export const getEntries = async (days, category) => {
   return entries;
 };
 
-export const saveEntry = async (value, entry = {}) => {
+export const saveEntry = async (entry = {}) => {
   const realm = await getRealm();
   let data = {};
 
   try {
+    const category = realm.objects('Category').filtered('id == $0', entry.cateogry.id)[0];
+
     realm.write(() => {
       data = {
-        id: value.id || entry.id || getUUID(),
-        amount: value.amount || entry.amount || 0,
-        entryAt: value.entryAt || entry.entryAt || new Date(),
-        description: value.category.name,
-        photo: value.photo,
-        address: value.address || entry.address,
-        latitude: value.latitude || entry.latitude,
-        longitude: value.longitude || entry.longitude,
-        isInit: value.isInit || false,
-        category: value.category || entry.category,
+        id: entry.id || getUUID(),
+        amount: entry.amount || 0,
+        entryAt: entry.entryAt,
+        description: entry.category.name,
+        photo: entry.photo,
+        address: entry.address,
+        latitude: entry.latitude,
+        longitude: entry.longitude,
+        isInit: entry.isInit || false,
+        category: category,
       };
 
       realm.create('Entry', data, true);
@@ -68,8 +70,10 @@ export const deleteEntry = async entry => {
   const realm = await getRealm();
 
   try {
+    const entryRealmObject = realm.objects('Entry').filtered('id == $0', entry.id)[0];
+
     realm.write(() => {
-      realm.delete(entry);
+      realm.delete(entryRealmObject);
     });
   } catch (error) {
     console.error(
