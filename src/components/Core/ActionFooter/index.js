@@ -3,13 +3,13 @@ import {View, TouchableOpacity, Text} from 'react-native';
 
 import styles from './styles';
 
-export default function ActionFooter({children}) {
+const ActionFooter = ({children}) => {
   return (
-    <View style={styles.inner}>
-      <View style={styles.container}>{children}</View>
+    <View style={styles.container}>
+      <View style={styles.inner}>{children}</View>
     </View>
   );
-}
+};
 
 export const ActionPrimaryButton = ({title, onPress}) => {
   return (
@@ -26,3 +26,5 @@ export const ActionSecondaryButton = ({title, onPress}) => {
     </TouchableOpacity>
   );
 };
+
+export default ActionFooter;

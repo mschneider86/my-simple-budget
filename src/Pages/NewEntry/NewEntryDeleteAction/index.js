@@ -1,11 +1,13 @@
 import React from 'react';
 import {Alert, View, TouchableOpacity} from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import styles from './styles';
-import Colors from '../../styles/Colors';
+import Colors from '../../../styles/Colors';
 
-export default function NewEntryDeleteAction({entry, onOkPress}) {
+import styles from './styles';
+
+const NewEntryDeleteAction = ({entry, onOkPress}) => {
   const onDelete = () => {
     Alert.alert(
       'Apagar?',
@@ -27,4 +29,6 @@ export default function NewEntryDeleteAction({entry, onOkPress}) {
       </View>
     )
   );
-}
+};
+
+export default NewEntryDeleteAction;

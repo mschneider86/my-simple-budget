@@ -1,20 +1,21 @@
 import React from 'react';
-import {View, TouchableOpacity, Alert} from 'react-native';
-import Geocoder from 'react-native-geocoding';
+import {Alert, View, TouchableOpacity} from 'react-native';
+
 import Geolocation from '@react-native-community/geolocation';
-import {Icon} from 'react-native-vector-icons/MaterialIcons';
+import Geocoder from 'react-native-geocoding';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../../../styles/Colors';
 
 import styles from './styles';
 
-export default function NewEntryAddressPicker({address, onChange}) {
+const NewEntryAddressPicker = ({address, onChange}) => {
   const getLocation = (latitude, longitude) => {
-    Geocoder.init('INSERT_GOOGLE_API_HERE');
+    Geocoder.init('AIzaSyCQ-fnvtHoy_pEcHyJbkBSyFiODMm-8JKI');
 
     Geocoder.from({latitude, longitude})
-      .then(json => {
-        const formattedAddress = json.results[0].formattedAddress;
+      .then((json) => {
+        const formattedAddress = json.results[0].formatted_address;
 
         Alert.alert('Localização', formattedAddress, [
           {
@@ -34,31 +35,32 @@ export default function NewEntryAddressPicker({address, onChange}) {
           },
         ]);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(
-          'NewEntryAddressPicker :: getLocation :: error getting user location',
+          'NewEntryAddressPicker :: getLocation :: erro ao recuperar a localização',
           error,
         );
         Alert.alert(
-          'Error recovering your position, please check that you have given the required permission to the app and try again!',
+          'Houve um erro ao recuperar sua posição, por favor, tenha certeza que autorizou este aplicativo',
         );
       });
   };
 
   const getPosition = () => {
     Geolocation.getCurrentPosition(
-      pos => {
-        const [latitude, longitude] = pos.coords;
+      (pos) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
 
         getLocation(latitude, longitude);
       },
-      error => {
+      (error) => {
         console.error(
-          'NewEntryAddressPicker :: getPosition :: error getting user location',
+          'NewEntryAddressPicker :: getPosition :: erro ao recuperar a posição',
           error,
         );
         Alert.alert(
-          'Error recovering your position, please check that you have given the required permission to the app and try again!',
+          'Houve um erro ao recuperar sua posição, por favor, tenha certeza que autorizou este aplicativo',
         );
       },
     );
@@ -70,26 +72,28 @@ export default function NewEntryAddressPicker({address, onChange}) {
         {
           text: 'Apagar',
           onPress: () => {
-            onChange({latitude: null, longitude: null, address: ''});
+            onChange({latitude: null, longitude: null, address: null});
           },
-          style: 'cancel',
         },
         {
-          text: 'OK',
-          onPress: () => console.log('OK Pressed'),
+          text: 'Cancelar',
+          style: 'cancel',
         },
       ]);
     } else {
       getPosition();
     }
   };
+
   return (
     <View>
       <TouchableOpacity
-        style={[styles.button, address ? styles.buttonActivated : '']}
+        style={[styles.button, address ? styles.buttonActived : '']}
         onPress={onButtonPress}>
         <Icon name="person-pin" size={30} color={Colors.white} />
       </TouchableOpacity>
     </View>
   );
-}
+};
+
+export default NewEntryAddressPicker;

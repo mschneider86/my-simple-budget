@@ -5,7 +5,7 @@ import InputMoney from '../../../components/Core/InputMoney';
 
 import styles from './styles';
 
-export default function WelcomeBalanceInput({value, onChangeValue}) {
+const WelcomeBalanceInput = ({value, onChangeValue}) => {
   return (
     <View>
       <Text style={styles.label}>Informe seu saldo</Text>
@@ -16,4 +16,6 @@ export default function WelcomeBalanceInput({value, onChangeValue}) {
       />
     </View>
   );
-}
+};
+
+export default WelcomeBalanceInput;

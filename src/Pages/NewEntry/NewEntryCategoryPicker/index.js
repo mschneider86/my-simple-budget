@@ -1,18 +1,14 @@
 import React, {useState} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
-import CategoryModal from '../../components/CategoryModal';
+import CategoryModal from '../../../components/CategoryModal';
 
 import styles from './styles';
 
-export default function NewEntrycategoryPicker({
-  debit,
-  category,
-  onChangeCategory,
-}) {
+const NewEntryCategoryPicker = ({debit, category, onChangeCategory}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onCategoryPress = item => {
+  const onCategoryPress = (item) => {
     onChangeCategory(item);
     onClosePress();
   };
@@ -38,4 +34,6 @@ export default function NewEntrycategoryPicker({
       />
     </View>
   );
-}
+};
+
+export default NewEntryCategoryPicker;

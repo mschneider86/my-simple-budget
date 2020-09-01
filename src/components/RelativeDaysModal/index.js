@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Modal, FlatList, TouchableOpacity, Text} from 'react-native';
+import {Modal, View, FlatList, TouchableOpacity, Text} from 'react-native';
 
 import ActionFooter, {ActionPrimaryButton} from '../Core/ActionFooter';
 
 import styles from './styles';
 
-export default function RelativeDaysModal({isVisible, onConfirm, onCancel}) {
+const RelativeDaysModal = ({isVisible, onConfirm, onCancel}) => {
   const relativeDays = [1, 3, 7, 15, 21, 30, 45, 60, 90, 180, 365];
 
   return (
@@ -13,19 +13,22 @@ export default function RelativeDaysModal({isVisible, onConfirm, onCancel}) {
       <View style={styles.modal}>
         <FlatList
           data={relativeDays}
-          keyExtractor={item => item.toString()}
+          keyExtractor={(item) => item.toString()}
           renderItem={({item}) => (
             <TouchableOpacity
               style={styles.modalItem}
               onPress={() => onConfirm(item)}>
-              <Text style={styles.modalItemText}>`${item} dias`</Text>
+              <Text style={styles.modalItemText}>{`${item} dias`}</Text>
             </TouchableOpacity>
           )}
         />
       </View>
+
       <ActionFooter>
         <ActionPrimaryButton title="Fechar" onPress={onCancel} />
       </ActionFooter>
     </Modal>
   );
-}
+};
+
+export default RelativeDaysModal;

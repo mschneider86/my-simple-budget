@@ -10,11 +10,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
-    colors: Colors.white,
-  },
-  value: {
-    fontSize: 28,
-    textAlign: 'center',
     color: Colors.white,
   },
   panel: {
@@ -23,6 +18,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 30,
     marginVertical: 10,
+  },
+  value: {
+    fontSize: 28,
+    color: Colors.white,
+    textAlign: 'center',
   },
 });
 

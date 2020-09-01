@@ -12,25 +12,25 @@ export const getRealm = async () => {
     schemaVersion: 3,
   });
 
-  //dropDB(realm);
-  //cleanInitialized();
+  // dropDB(realm);
+  // cleanInitialized();
   initDB(realm);
 
   return realm;
 };
 
-export const initDB = realm => {
+export const initDB = (realm) => {
   const categoriesLength = realm.objects('Category').length;
   console.log(`initDB :: categories length: ${categoriesLength}`);
 
   if (categoriesLength === 0) {
     const categories = getDefaultCategories();
 
-    console.log('initDB :: initializing db...');
+    console.log('initDB :: initing db...');
 
     try {
       realm.write(() => {
-        categories.forEach(category => {
+        categories.forEach((category) => {
           console.log(
             `initDB :: creating category: ${JSON.stringify(category)}`,
           );
@@ -40,12 +40,12 @@ export const initDB = realm => {
       });
     } catch (error) {}
   } else {
-    console.log('initDB :: categories already exist... Skipping.');
+    console.log('initDB :: categories already existing... Skypping.');
   }
 };
 
-export const dropDB = realm => {
-  console.log('dropDB :: deleting db...');
+export const dropDB = (realm) => {
+  console.log('dropDB :: dropping db...');
   realm.write(() => {
     realm.deleteAll();
   });

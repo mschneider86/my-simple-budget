@@ -1,12 +1,10 @@
 import React from 'react';
+import {View} from 'react-native';
 
 import Container from '../Core/Container';
 
 import EntrySummaryChart from './EntrySummaryChart';
 import EntrySummaryList from './EntrySummaryList';
-
-import styles from './styles';
-import {View} from 'react-native';
 
 import useBalanceSumByCategory from '../../hooks/useBalanceSumByCategory';
 

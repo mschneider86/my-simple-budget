@@ -1,44 +1,47 @@
 import React, {useState} from 'react';
 import {
+  StatusBar,
   View,
   TouchableOpacity,
   Text,
   ScrollView,
-  StatusBar,
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import ActionFooter, {
   ActionPrimaryButton,
 } from '../../components/Core/ActionFooter';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import Colors from '../../styles/Colors';
-import CategoryModal from '../../components/CategoryModal';
 import BalanceLabel from '../../components/BalanceLabel';
 import EntrySummary from '../../components/EntrySummary';
 import EntryList from '../../components/EntryList';
 import RelativeDaysModal from '../../components/RelativeDaysModal';
+import CategoryModal from '../../components/CategoryModal';
+
+import Colors from '../../styles/Colors';
+
 import styles from './styles';
 
 const Report = ({navigation}) => {
   const [relativeDaysModalVisible, setRelativeDaysModalVisible] = useState(
     false,
   );
-
-  const [cateogryModalVisible, setCategoryModalVisible] = useState(false);
+  const [categoryModalVisible, setCategoryModalVisible] = useState(false);
 
   const [relativeDays, setRelativeDays] = useState(7);
-  const [category, setsetCategory] = useState({
+  const [category, setCategory] = useState({
     id: null,
     name: 'Todas Categorias',
   });
 
-  const onRelativeDaysPress = item => {
+  const onRelativeDaysPress = (item) => {
     setRelativeDays(item);
-    onRelativeDaysClosePress;
+    onRelativeDaysClosePress();
   };
 
-  const onCategoryPress = item => {
-    setsetCategory(item);
+  const onCategoryPress = (item) => {
+    setCategory(item);
     onCategoryClosePress();
   };
 
@@ -54,15 +57,17 @@ const Report = ({navigation}) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
       <BalanceLabel />
+
       <View style={styles.filtersContainer}>
         <TouchableOpacity
           style={styles.filterButton}
           onPress={() => {
             setRelativeDaysModalVisible(true);
           }}>
-          <Text style={styles.filterButtonText}>
-            `Últimos ${relativeDays} dias`
-          </Text>
+          <Text
+            style={
+              styles.filterButtonText
+            }>{`Últimos ${relativeDays} dias`}</Text>
           <Icon
             name="keyboard-arrow-down"
             size={20}
@@ -88,8 +93,8 @@ const Report = ({navigation}) => {
           />
         </TouchableOpacity>
         <CategoryModal
-          categoryType={'all'}
-          isVisible={cateogryModalVisible}
+          categoryType="all"
+          isVisible={categoryModalVisible}
           onConfirm={onCategoryPress}
           onCancel={onCategoryClosePress}
         />

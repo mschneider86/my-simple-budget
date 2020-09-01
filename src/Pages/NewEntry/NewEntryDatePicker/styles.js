@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Colors from '../../styles/Colors';
+import Colors from '../../../styles/Colors';
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.red,
+    backgroundColor: Colors.asphalt,
     width: 59,
     height: 59,
     borderRadius: 150,
@@ -13,3 +13,5 @@ const styles = StyleSheet.create({
     margin: 2,
   },
 });
+
+export default styles;

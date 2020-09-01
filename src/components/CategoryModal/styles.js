@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import Colors from '../../../styles/Colors';
+import Colors from '../../styles/Colors';
 
 const styles = StyleSheet.create({
   modal: {
@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
   modalItem: {
     backgroundColor: Colors.asphalt,
     borderRadius: 15,
-    marginHorizontal: 20,
     marginVertical: 10,
+    marginHorizontal: 20,
     padding: 20,
   },
   modalItemText: {

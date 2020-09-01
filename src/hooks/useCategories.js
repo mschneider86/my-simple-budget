@@ -1,9 +1,9 @@
-import {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 import {
-  getAllCategories,
-  getCreditCategories,
   getDebitCategories,
+  getCreditCategories,
+  getAllCategories,
   getInitCategories,
 } from '../services/Categories';
 
@@ -29,15 +29,15 @@ const useCategories = () => {
       setAllCategories(data);
     };
 
-    const loadInitCategories = async () => {
+    const loadInitCategory = async () => {
       const data = await getInitCategories();
-      setInitCategories(data['0']);
+      setInitCategories(data);
     };
 
     loadDebitCategories();
     loadCreditCategories();
     loadAllCategories();
-    loadInitCategories();
+    loadInitCategory();
   }, []);
 
   return [debitCategories, creditCategories, allCategories, initCategories];

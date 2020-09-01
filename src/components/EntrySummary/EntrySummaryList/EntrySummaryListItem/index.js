@@ -1,17 +1,20 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-import styles from './styles';
 import Svg, {Circle} from 'react-native-svg';
-import Colors from '../../../../styles/Colors';
+
 import Currency from '../../../Core/Currency';
 
-export default function EntrySummaryListItem({entry}) {
+import Colors from '../../../../styles/Colors';
+
+import styles from './styles';
+
+const EntrySummaryListItem = ({entry}) => {
   const bulletColor = entry.category.color || Colors.white;
 
   return (
     <View style={styles.container}>
-      <Svg height="20" width="20">
+      <Svg height="20" width="22">
         <Circle
           cx="10"
           cy="10"
@@ -27,4 +30,6 @@ export default function EntrySummaryListItem({entry}) {
       </Text>
     </View>
   );
-}
+};
+
+export default EntrySummaryListItem;

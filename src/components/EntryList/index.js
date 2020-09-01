@@ -20,19 +20,18 @@ const EntryList = ({days = 7, category}) => {
       onPressActionButton={() => navigation.navigate('Report')}>
       <FlatList
         data={entries}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         renderItem={({item, index}) => (
           <EntryListItem
             entry={item}
             isFirstItem={index === 0}
             isLastItem={index === entries.length - 1}
-            onEntryPress={entry => {
+            onEntryPress={(entry) => {
               const entryToJson = JSON.parse(JSON.stringify(entry));
               navigation.navigate('NewEntry', {
                 entry: entryToJson,
               });
             }}
-            onPressActionButton={() => navigation.navigate('Report')}
           />
         )}
       />

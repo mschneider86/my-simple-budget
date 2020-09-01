@@ -1,32 +1,32 @@
 import React, {useState} from 'react';
-import {View, StatusBar} from 'react-native';
-
-import BalanceLabel from '../../components/BalanceLabel';
+import {StatusBar, View} from 'react-native';
 
 import ActionFooter, {
   ActionPrimaryButton,
   ActionSecondaryButton,
 } from '../../components/Core/ActionFooter';
 
-import NewEntryInput from '../../components/NewEntryInput';
-import NewEntryCategoryPicker from '../../components/NewEntryCategoryPicker';
-import NewEntryDatePicker from '../../components/NewEntryDatePicker';
-import NewEntryDeleteAction from '../../components/NewEntryDeleteAction';
+import BalanceLabel from '../../components/BalanceLabel';
+import NewEntryInput from './NewEntryInput';
+import NewEntryCategoryPicker from './NewEntryCategoryPicker';
+import NewEntryDatePicker from './NewEntryDatePicker';
+import NewEntryCameraPicker from './NewEntryCameraPicker';
+import NewEntryAddressPicker from './NewEntryAddressPicker';
+import NewEntryDeleteAction from './NewEntryDeleteAction';
 
 import useEntries from '../../hooks/useEntries';
 
-import styles from './styles';
-import NewEntryAddressPicker from './NewEntryAddressPicker';
-import NewEntryCameraPicker from './NewEntryCameraPicker';
 import Colors from '../../styles/Colors';
+
+import styles from './styles';
 
 const NewEntry = ({route, navigation}) => {
   const entry = route.params?.entry
     ? route.params.entry
     : {
         id: null,
-        amount: '0.00',
-        //entryAt: new Date(),
+        amount: 0,
+        // entryAt: new Date(),
         photo: null,
         address: null,
         latitude: null,
@@ -40,7 +40,7 @@ const NewEntry = ({route, navigation}) => {
   const [amount, setAmount] = useState(entry.amount);
   const [category, setCategory] = useState(entry.category);
   const [entryAt, setEntryAt] = useState(
-    entry.entryAt ? NewEntryDatePicker(entry.entryAt) : new Date(),
+    entry.entryAt ? new Date(entry.entryAt) : new Date(),
   );
   const [photo, setPhoto] = useState(entry.photo);
   const [address, setAddress] = useState(entry.address);
@@ -56,15 +56,14 @@ const NewEntry = ({route, navigation}) => {
   };
 
   const onSave = () => {
-    //TODO test remove properties name
     const data = {
       id: entry.id,
-      amount: parseFloat(amount),
-      address: address,
+      amount: amount,
+      category: category,
       photo: photo,
+      address: address,
       latitude: latitude,
       longitude: longitude,
-      category: category,
       entryAt: entryAt,
     };
 
@@ -90,10 +89,9 @@ const NewEntry = ({route, navigation}) => {
       <View style={styles.formContainer}>
         <NewEntryInput
           value={amount}
-          onChangeDebit={setDebit}
           onChangeValue={setAmount}
+          onChangeDebit={setDebit}
         />
-
         <NewEntryCategoryPicker
           debit={debit}
           category={category}
@@ -111,7 +109,6 @@ const NewEntry = ({route, navigation}) => {
               setAddress(address);
             }}
           />
-
           <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
         </View>
       </View>

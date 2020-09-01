@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import Colors from '../../styles/Colors';
+
+import Colors from '../../../styles/Colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,10 +12,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   debitButton: {
-    backgroundColor: Colors.green,
     flexDirection: 'row',
+    paddingVertical: 20,
     paddingHorizontal: 20,
-    paddingVertical: 10,
   },
   debitButtonPrefix: {
     fontSize: 28,

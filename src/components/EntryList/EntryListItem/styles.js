@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     color: Colors.metal,
     marginTop: 2,
     marginRight: 2,
-    marginLeft: 5,
   },
   addressText: {
     fontSize: 12,

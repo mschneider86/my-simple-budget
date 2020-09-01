@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import {View, TouchableOpacity} from 'react-native';
-import {Icon} from 'react-native-vector-icons/MaterialIcons';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import NewEntryCameraPickerModal from './NewEntryCameraPickerModal';
 
 import Colors from '../../../styles/Colors';
+
 import styles from './styles';
 
-export default function NewEntryCameraPicker({photo, onChangePhoto}) {
-  const [showModal, setShowModal] = useState();
+const NewEntryCameraPicker = ({photo, onChangePhoto}) => {
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const onChangePhotoPress = newPhoto => {
+  const onChangePhotoPress = (newPhoto) => {
     onChangePhoto(newPhoto);
     onClosePress();
   };
@@ -20,23 +23,27 @@ export default function NewEntryCameraPicker({photo, onChangePhoto}) {
   };
 
   const onClosePress = () => {
-    setShowModal(false);
+    setModalVisible(false);
   };
 
   return (
     <View>
       <TouchableOpacity
-        style={[styles.button, photo ? styles.buttonActivated : '']}
-        onPress={() => setShowModal(true)}>
+        style={[styles.button, photo ? styles.buttonActived : '']}
+        onPress={() => {
+          setModalVisible(true);
+        }}>
         <Icon name="photo-camera" size={30} color={Colors.white} />
       </TouchableOpacity>
       <NewEntryCameraPickerModal
         photo={photo}
-        isVisible={showModal}
+        isVisible={modalVisible}
         onChangePhoto={onChangePhotoPress}
-        onDeletePicture={onDeletePicturePress}
+        onDelete={onDeletePicturePress}
         onClose={onClosePress}
       />
     </View>
   );
-}
+};
+
+export default NewEntryCameraPicker;

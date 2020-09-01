@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 
 import {TextInputMask} from 'react-native-masked-text';
-import styles from './styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
-export default function InputMoney({
+const InputMoney = ({
   value,
   startWithDebit = true,
   onChangeDebit,
   onChangeValue,
-}) {
+}) => {
   const setDefaultDebit = () => {
     if (value === 0) {
       return startWithDebit ? -1 : 1;
@@ -30,7 +28,7 @@ export default function InputMoney({
   const [debit, setDebit] = useState(setDefaultDebit());
   const [debitPrefix, setDebitPrefix] = useState(setDefaultDebitPrefix());
 
-  const onChangeOperationType = () => {
+  const onChangeDebitCredit = () => {
     if (debit < 0) {
       setDebit(1);
       setDebitPrefix('');
@@ -48,7 +46,7 @@ export default function InputMoney({
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.debitButton}
-        onPress={onChangeOperationType}>
+        onPress={onChangeDebitCredit}>
         <Text style={styles.debitButtonPrefix}>{debitPrefix}</Text>
         <Text style={styles.debitButtonText}>R$</Text>
       </TouchableOpacity>
@@ -65,9 +63,11 @@ export default function InputMoney({
         value={value}
         includeRawValueInChangeText={true}
         onChangeText={(maskedValue, rawValue) => {
-          onChangeValue && onChangeValue(rawValue * debit);
+          onChangeValue(rawValue * debit);
         }}
       />
     </View>
   );
-}
+};
+
+export default InputMoney;

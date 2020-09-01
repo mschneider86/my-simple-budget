@@ -5,8 +5,6 @@ import BalancePanel from '../../components/BalancePanel';
 import EntrySummary from '../../components/EntrySummary';
 import EntryList from '../../components/EntryList';
 
-import Colors from '../../styles/Colors';
-
 import styles from './styles';
 
 const Main = ({navigation}) => {

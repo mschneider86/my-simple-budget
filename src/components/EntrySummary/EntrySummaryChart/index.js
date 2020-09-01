@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
 import {PieChart} from 'react-native-svg-charts';
 
@@ -20,7 +20,7 @@ const EntrySummaryChart = ({data}) => {
 
   return (
     <View style={styles.container}>
-      <PieChart style={styles.chart} />
+      <PieChart style={styles.chart} data={chartData} />
     </View>
   );
 };

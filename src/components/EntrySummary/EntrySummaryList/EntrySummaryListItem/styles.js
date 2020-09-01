@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
   },
   value: {
     flex: 1,
-    textAlign: 'right',
     fontSize: 12,
     color: Colors.white,
+    textAlign: 'right',
     marginTop: 2,
   },
 });

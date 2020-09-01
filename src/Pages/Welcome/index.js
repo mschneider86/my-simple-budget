@@ -1,25 +1,28 @@
 import React, {useState} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Image} from 'react-native';
 
 import ActionFooter, {
-  ActionPromaryButton,
+  ActionPrimaryButton,
 } from '../../components/Core/ActionFooter';
 
-import styles from './styles';
-import logo from '../../assets/logo-white.png';
 import WelcomeMessage from './WelcomeMessage';
 import WelcomeBalanceInput from './WelcomeBalanceInput';
+
 import useCategories from '../../hooks/useCategories';
 import {saveEntry} from '../../services/Entries';
 import {setInitialized} from '../../services/Welcome';
 
-export default function Welcome({navigation}) {
+import Logo from '../../assets/logo-white.png';
+
+import styles from './styles';
+
+const Welcome = ({navigation}) => {
   const [, , , initCategories] = useCategories();
   const [amount, setAmount] = useState(0);
 
   const onSavePress = () => {
     saveEntry({
-      amount: amount,
+      amount: parseFloat(amount),
       isInit: true,
       category: initCategories,
     });
@@ -31,13 +34,15 @@ export default function Welcome({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
-        <Image source={logo} />
+        <Image source={Logo} />
       </View>
       <WelcomeMessage />
       <WelcomeBalanceInput value={amount} onChangeValue={setAmount} />
       <ActionFooter>
-        <ActionPromaryButton title="Continuar" onPress={onSavePress} />
+        <ActionPrimaryButton title="Continuar" onPress={onSavePress} />
       </ActionFooter>
     </View>
   );
-}
+};
+
+export default Welcome;

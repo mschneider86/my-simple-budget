@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
+
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import styles from './styles';
-import Colors from '../../styles/Colors';
+import Colors from '../../../styles/Colors';
 
-export default function NewEntryDatePicker({value, onChange}) {
+import styles from './styles';
+
+const NewEntryDatePicker = ({value, onChange}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onChangeValue = date => {
+  const onChangeValue = (date) => {
     onChange(date);
     onCancel();
   };
@@ -39,4 +41,6 @@ export default function NewEntryDatePicker({value, onChange}) {
       />
     </View>
   );
-}
+};
+
+export default NewEntryDatePicker;

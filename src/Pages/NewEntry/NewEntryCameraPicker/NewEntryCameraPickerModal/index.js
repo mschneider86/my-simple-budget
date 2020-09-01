@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Alert, View, ImageBackground, Modal} from 'react-native';
+import {Alert, View, Modal, ImageBackground} from 'react-native';
+
 import {RNCamera} from 'react-native-camera';
-import {Icon} from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../../../../styles/Colors';
 
@@ -11,7 +12,7 @@ const NewEntryCameraPickerModal = ({
   photo,
   isVisible,
   onChangePhoto,
-  onDeletePicture,
+  onDelete,
   onClose,
 }) => {
   const [camera, setCamera] = useState();
@@ -27,10 +28,10 @@ const NewEntryCameraPickerModal = ({
       onChangePhoto(uri);
     } catch (error) {
       console.error(
-        'NewEntryCameraPickerModal :: onTakePicture error taking picture',
+        'NewEntryCameraPickerModal :: onTakePicture error on take picture',
         error,
       );
-      Alert.alert('Erro', 'Erro ao tirar a foto.');
+      Alert.alert('Erro', 'Houve um erro ao tirar a foto.');
     }
   };
 
@@ -44,7 +45,7 @@ const NewEntryCameraPickerModal = ({
                 name="delete"
                 size={50}
                 color={Colors.white}
-                onPress={onDeletePicture}
+                onPress={onDelete}
                 style={styles.buttonClose}
               />
               <Icon
@@ -58,11 +59,11 @@ const NewEntryCameraPickerModal = ({
           </ImageBackground>
         ) : (
           <RNCamera
+            ref={(ref) => setCamera(ref)}
             style={styles.camera}
-            ref={ref => setCamera(ref)}
             type={RNCamera.Constants.Type.back}
-            autoFocus={RNCamera.Constants.AutoFocus.on}
-            flashMode={RNCamera.Constants.FlashMode.auto}
+            autofocus={RNCamera.Constants.AutoFocus.on}
+            flashMode={RNCamera.Constants.FlashMode.on}
             androidCameraPermissionOptions={{
               title: 'Permissão para usar a câmera',
               message: 'Precisamos da sua permissão para usar a câmera.',
@@ -81,7 +82,7 @@ const NewEntryCameraPickerModal = ({
               name="close"
               size={50}
               color={Colors.white}
-              onPress={onDeletePicture}
+              onPress={onDelete}
               style={styles.buttonDeletePicture}
             />
           </RNCamera>

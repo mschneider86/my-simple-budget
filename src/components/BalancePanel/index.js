@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableOpacity, StatusBar} from 'react-native';
+import {StatusBar, View, TouchableOpacity} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -7,8 +7,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import BalancePanelLabel from './BalancePanelLabel';
 import BalancePanelChart from './BalancePanelChart';
 
-import Colors from '../../styles/Colors';
 import useBalance from '../../hooks/useBalance';
+
+import Colors from '../../styles/Colors';
 
 import styles from './styles';
 

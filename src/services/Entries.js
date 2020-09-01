@@ -1,9 +1,9 @@
-enimport {Alert} from 'react-native';
+import {Alert} from 'react-native';
+
+import moment from '../vendors/moment';
 
 import {getRealm} from './Realm';
 import {getUUID} from '../services/UUID';
-
-import moment from '../vendors/moment';
 
 export const getEntries = async (days, category) => {
   let realm = await getRealm();
@@ -11,9 +11,7 @@ export const getEntries = async (days, category) => {
   realm = realm.objects('Entry');
 
   if (days > 0) {
-    const date = moment()
-      .subtract(days, 'days')
-      .toDate();
+    const date = moment().subtract(days, 'days').toDate();
 
     console.log('getEntries :: days ', days);
 
@@ -23,7 +21,7 @@ export const getEntries = async (days, category) => {
   if (category && category.id) {
     console.log('getEntries :: category ', JSON.stringify(category));
 
-    realm = realm.filtered('category === $0', category);
+    realm = realm.filtered('category == $0', category);
   }
 
   const entries = realm.sorted('entryAt', true);
@@ -33,13 +31,16 @@ export const getEntries = async (days, category) => {
   return entries;
 };
 
-export const saveEntry = async (entry = {}) => {
+export const saveEntry = async (entry) => {
   const realm = await getRealm();
   let data = {};
 
-  try {
-    const category = realm.objects('Category').filtered('id == $0', entry.cateogry.id)[0];
+  console.log('saveEntry :: value: ', JSON.stringify(entry));
 
+  try {
+    const category = realm
+      .objects('Category')
+      .filtered('id == $0', entry.category.id)[0];
     realm.write(() => {
       data = {
         id: entry.id || getUUID(),
@@ -59,19 +60,24 @@ export const saveEntry = async (entry = {}) => {
 
     console.log('saveEntry :: data: ', JSON.stringify(data));
   } catch (error) {
-    console.error('saveEntry :: error on save object: ', JSON.stringify(data));
+    console.error(
+      'saveEntry :: error on save object: ',
+      JSON.stringify(data),
+      JSON.stringify(error),
+    );
     Alert.alert('Erro ao salvar os dados de lançamento.');
   }
 
   return data;
 };
 
-export const deleteEntry = async entry => {
+export const deleteEntry = async (entry) => {
   const realm = await getRealm();
 
   try {
-    const entryRealmObject = realm.objects('Entry').filtered('id == $0', entry.id)[0];
-
+    const entryRealmObject = realm
+      .objects('Entry')
+      .filtered('id == $0', entry.id)[0];
     realm.write(() => {
       realm.delete(entryRealmObject);
     });
