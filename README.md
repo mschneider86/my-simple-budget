@@ -1,10 +1,6 @@
 <h1 align="center">
-    <img alt="Aircnc" src="assets_github/logo.png" width="250px" />
+   💰 My Simple Budget - Control your expenses
 </h1>
-
-<h4 align="center">
-   💰 Control your expenses
-</h4>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/mschneider86/my-simple-budget.svg">
@@ -25,6 +21,7 @@
 </p>
 
 ## 💻 Project
+A simple expense tracker to help you with your finances developed with React Native following Dev Samurai's course.
 
 ## :rocket: Technologies
 
