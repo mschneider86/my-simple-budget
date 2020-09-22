@@ -11,17 +11,14 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/mschneider86/my-simple-budget.svg">
   
-
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mschneider86/my-simple-budget">
-
-
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mschneider86/my-simple-budget">
   
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/mschneider86/my-simple-budget">
-
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/mschneider86/my-simple-budget.svg">
+  
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
 
-<p >  
+<p align="center">  
   <img alt="Mobile" style="margin-left:10px" src="github_assets/image1.webp" width="226px" height="380px">
   <img alt="Mobile" style="margin-left:10px" src="github_assets/image2.webp" width="226px" height="380px">
   <img alt="Mobile" style="margin-left:10px" src="github_assets/image3.webp" width="226px" height="380px">
