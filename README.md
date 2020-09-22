@@ -30,6 +30,16 @@ This project was developed with the following technologies:
 - [React](https://reactjs.org)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
+- [React Native Camera](https://github.com/react-native-community/react-native-camera)
+- [React Native Geocoding](https://github.com/marlove/react-native-geocoding)
+- [React Native Linear Gradient](https://github.com/react-native-community/react-native-linear-gradient)
+- [React Native Masked Text](https://github.com/benhurott/react-native-masked-text)
+- [React Native Modal DateTime Picker](https://github.com/mmazzarolo/react-native-modal-datetime-picker)
+- [React Native SVG](https://github.com/react-native-community/react-native-svg)
+- [React Native SVG Charts](https://github.com/JesperLekland/react-native-svg-charts)
+- [React Number Format](https://github.com/s-yadav/react-number-format)
+- [Realm](https://github.com/realm/realm-js)
+- [UUID](https://github.com/uuidjs/uuid)
 
 ### 🧭 Running the Mobile
 
