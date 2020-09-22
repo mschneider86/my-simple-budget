@@ -21,7 +21,7 @@
 </p>
 
 ## 💻 Project
-A simple expense tracker to help you with your finances developed with React Native following Dev Samurai's course.
+A simple expense manager to help you with your finances developed with React Native following Dev Samurai's course.
 
 ## :rocket: Technologies
 
